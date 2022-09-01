@@ -58480,7 +58480,7 @@
                   { viewValue: "VB.NET", value: Bn.Vb },
                   { viewValue: "PYTHON", value: Bn.Python },
                 ]),
-                (this.selectedTabIndex = Hn.Main),
+                (_),
                 (this.instructions = []),
                 (this.previousInstruction = null),
                 (this.editorStateValue = {
@@ -58504,7 +58504,6 @@
                 t && (t.refresh(), t.focus());
               }),
                 this.codeService.getCursorPosition().subscribe((t) => {
-                  this.selectedTabIndex = t.pane;
                   const e = this.getSelectedEditor();
                   null == e || e.refresh(),
                     null == e || e.focus(),
@@ -58614,10 +58613,10 @@
                 );
                 t.e === Hn.Main || "NEW" === t.op
                   ? (this.mainMethodEditor.highlightLine(t.f),
-                    (this.selectedTabIndex = Hn.Main))
+                    (_))
                   : t.e === Hn.Extensions &&
                     (this.extensionMethodsEditor.highlightLine(t.f),
-                    (this.selectedTabIndex = Hn.Extensions)),
+                    (_)),
                   (this.previousInstruction = t);
               } else this.previousInstruction = null;
             }
@@ -58639,7 +58638,7 @@
               const e = t;
               this.messageService.clear(),
                 this.unhighlightPreviousLine(),
-                (this.selectedTabIndex = e.paneNum);
+                (_);
               const n = this.getSelectedEditor();
               null == n || n.highlightErrorLine(e.lineNum),
                 this.messageService.addMessage(
