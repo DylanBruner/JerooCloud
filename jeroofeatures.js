@@ -204,6 +204,10 @@ setTimeout(() => {
                 }
             }
         }
+        else if (line_text.includes('ghost(')){
+            args = line_text.split('ghost(')[1].split(')')[0].split(',')
+            window.disableJerooCollisions = args[0] == 'true'
+        }
     }
     //====================
 

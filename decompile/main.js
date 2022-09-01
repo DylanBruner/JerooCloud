@@ -57594,32 +57594,35 @@
             t.setJeroo(this.getX(), this.getY(), null),
             (this.x = e.x),
             (this.y = e.y);
-          const i = t.getJeroo(e.x, e.y);
-          if (i)
-          throw (
-              (i.setInJeroo(),
-              (this.collisionType = Hi.Jeroo),
-              new Error("LOGIC ERROR: Jeroo has collided with another jeroo"))
+          
+          if (!window.disableJerooCollisions) {
+            const i = t.getJeroo(e.x, e.y);
+            if (i)
+            throw (
+                (i.setInJeroo(),
+                (this.collisionType = Hi.Jeroo),
+                new Error("LOGIC ERROR: Jeroo has collided with another jeroo"))
+                );
+                if (
+                  (t.setJeroo(this.getX(), this.getY(), this),
+                  (this.collisionType = n === yi.Flower ? Hi.Flower : null),
+              !t.isInBounds(e.x, e.y))
+            )
+              throw (
+                ((this.collisionType = Hi.Water),
+                new Error("LOGIC ERROR: Jeroo is out of bounds"))
               );
-              if (
-                (t.setJeroo(this.getX(), this.getY(), this),
-                (this.collisionType = n === yi.Flower ? Hi.Flower : null),
-            !t.isInBounds(e.x, e.y))
-          )
-            throw (
-              ((this.collisionType = Hi.Water),
-              new Error("LOGIC ERROR: Jeroo is out of bounds"))
-            );
-          if (n === yi.Water)
-            throw (
-              ((this.collisionType = Hi.Water),
-              new Error("LOGIC ERROR: Jeroo is on water"))
-            );
-          if (n === yi.Net)
-            throw (
-              ((this.collisionType = Hi.Net),
-              new Error("LOGIC ERROR: Jeroo is on a net"))
+            if (n === yi.Water)
+              throw (
+                ((this.collisionType = Hi.Water),
+                new Error("LOGIC ERROR: Jeroo is on water"))
               );
+            if (n === yi.Net)
+              throw (
+                ((this.collisionType = Hi.Net),
+                new Error("LOGIC ERROR: Jeroo is on a net"))
+                );
+          }
         }
         toss(t) {
           if (this.numFlowers > 0) {
