@@ -194,6 +194,16 @@ setTimeout(() => {
             }
             trgt.teleport(jerooClass,y2,x2)
         }
+        else if (line_text.includes('teleportById(')){
+            args = line_text.split('teleportById(')[1].split(')')[0].split(',')
+            jeroo_list = getJerooList()
+            for (i = 0; i < jeroo_list.length; i++){
+                if (jeroo_list[i].id == args[0]){
+                    jeroo_list[i].teleport(jerooClass, Number(args[2]), Number(args[1]))
+                    return;
+                }
+            }
+        }
     }
     //====================
 
