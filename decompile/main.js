@@ -53272,7 +53272,7 @@
         Ht = n("0IaG"),
         zt = n("imBb"),
         Wt = n("bTqV");
-      let Ut = (() => {
+      let class_previousProjectFoundMenu = (() => {
         class t {
           constructor(t) {
             this.dialogRef = t;
@@ -58930,7 +58930,7 @@
             t
           );
         })(),
-        fr = (() => {
+        class_WarningResetEditor = (() => {
           class t {
             constructor(t) {
               this.dialogRef = t;
@@ -59040,7 +59040,7 @@
             }
             save() {
               this.dialog
-                .open(fr)
+                .open(class_WarningResetEditor)
                 .afterClosed()
                 .subscribe((t) => {
                   t && this.form
@@ -59488,7 +59488,7 @@
           }
           clearIsland() {
             this.dialog
-              .open(fr)
+              .open(class_WarningResetEditor)
               .afterClosed()
               .subscribe((t) => {
                 t &&
@@ -60221,7 +60221,7 @@
                     : n.hasCachedIsland())) &&
                   setTimeout(() => {
                     this.dialog
-                      .open(Ut)
+                      .open(class_previousProjectFoundMenu)
                       .afterClosed()
                       .subscribe((t) => {
                         t
