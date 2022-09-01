@@ -11,6 +11,17 @@ function getJerooList(){
     })
     return jerooList;
 }
+
+function getJerooById(id){
+    var jerooList = getJerooList();
+    for(var i = 0; i < jerooList.length; i++){
+        if(jerooList[i].id == id){
+            return jerooList[i];
+        }
+    }
+    return null;
+}
+
 (() => {
     selectedJeroo = null;
 
