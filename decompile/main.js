@@ -60169,8 +60169,8 @@
                 (this.jerooIsland = null),
                 (this.jerooEditor = null),
                 (this.fileSaver = null),
-                (this.speeds = [475, 350, 225, 125, 25, 2]),
-                (this.speedIndex = 3),
+                (this.speeds = [475, 350, 225, 125, 25, 2, 0]),
+                (this.speedIndex = 6),
                 (this.runtimeSpeed = this.speeds[this.speedIndex - 1]),
                 (this.speedRadios = [
                   { name: "1 - Slow", value: 1 },
@@ -60179,6 +60179,7 @@
                   { name: "4", value: 4 },
                   { name: "5 - Fast", value: 5 },
                   { name: "6 - Max", value: 6 },
+                  { name: "7 - MAX", value: 7 },
                 ]),
                 (this.tileTypes = [yi.Grass, yi.Water, yi.Flower, yi.Net]),
                 (this.tileTypeIndex = this.tileTypes.indexOf(
@@ -60700,7 +60701,7 @@
                   "min",
                   "1",
                   "max",
-                  "6",
+                  "7",
                   "tickInterval",
                   "1",
                   "thumbLabel",
