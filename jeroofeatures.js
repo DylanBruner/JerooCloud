@@ -17,6 +17,12 @@ setTimeout(() => {
         var script = document.createElement('script');
         script.src = '/jeroocloud.js';
         document.head.appendChild(script);
+        var script = document.createElement('script');
+        script.src = '/movementcontroller.js';
+        document.head.appendChild(script);
+        var script = document.createElement('script');
+        script.src = '/pathfinding.js';
+        document.head.appendChild(script);
     }, 2000)
 }, 2000)
 

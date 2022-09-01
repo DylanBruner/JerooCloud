@@ -26,10 +26,25 @@ def jeroo_cloud():
 def password_protect():
     with open('passwordprotect.js', 'r') as f:
         return f.read(), 200, {'Content-Type': 'text/javascript'}
-    
+
+@app.route('/easystar.js')
+def easystar():
+    with open('easystar.js', 'r') as f:
+        return f.read(), 200, {'Content-Type': 'text/javascript'}
+
+@app.route('/pathfinding.js')
+def pathfinding():
+    with open('pathfinding.js', 'r') as f:
+        return f.read(), 200, {'Content-Type': 'text/javascript'}
+
 @app.route('/theme.js')
 def theme():
     with open('theme.js', 'r') as f:
+        return f.read(), 200, {'Content-Type': 'text/javascript'}
+
+@app.route('/movementcontroller.js')
+def movement_controller():
+    with open('movementcontroller.js', 'r') as f:
         return f.read(), 200, {'Content-Type': 'text/javascript'}
 
 @app.route('/alertifytheme.css')

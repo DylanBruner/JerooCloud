@@ -1,10 +1,9 @@
 console.log("passwordprotect.js");
 
-if (localStorage['loggedIn'] == undefined){localStorage['loggedIn'] = 'false'}
-localStorage['loggedIn'] = 'false'
-
-if (localStorage['loggedIn'] == 'false'){
-    if (prompt("Password?") !== "1915"){console.log("wrong password"); window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}
-    else {localStorage['loggedIn'] = 'true'; console.log("correct password");}
-}
-else {console.log("already logged in");}
+setTimeout(() => {
+    if (localStorage.getItem("password") == null || localStorage.getItem("password") != "1915") {
+        pwd = prompt('Enter password')
+        if (pwd == '1915'){localStorage['password'] = '1915'}
+        else {window.location = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'}
+    }
+}, 200)
