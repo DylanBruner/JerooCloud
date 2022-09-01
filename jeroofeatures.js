@@ -214,6 +214,11 @@ setTimeout(() => {
             args = line_text.split('ghost(')[1].split(')')[0].split(',')
             window.disableJerooCollisions = args[0] == 'true'
         }
+        else if (line_text.includes('pathfindTo(')){
+            args = line_text.split('pathfindTo(')[1].split(')')[0].split(',')
+            logAction('Pathfinding...')
+            generateAndRun(getJerooById(Number(args[0])), Number(args[1]), Number(args[2]))
+        }
     }
     //====================
 

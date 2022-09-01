@@ -33,7 +33,7 @@ function generateRoute(startX, startY, endX, endY, callback){
     easystar.calculate();
 }
 
-function runRoute(jeroo, route){
+function runRoute(jeroo, route, delay_per_action=125){
     function turn_to(direction_int){
         var current_direction = jeroo.direction;
         var turns = 0;
@@ -69,13 +69,21 @@ function runRoute(jeroo, route){
             //If the jeroo's x is getting bigger then turn east
             jeroo.teleport(jerooClass, next.x, next.y);
             render_board();
-            runRoute(jeroo, route);
+            runRoute(jeroo, route, delay_per_action);
+        }, delay_per_action);
+    }
+
+    //if the length of the route is 0 then we are done
+    if(route.length == 0){
+        setTimeout(() => {
+            jerooEditor.onRunContiniousClick();
         },200);
     }
 }
 
-function generateAndRun(jeroo, endX, endY){
+function generateAndRun(jeroo, endX, endY, delay_per_action=125){
+    jerooEditor.onPauseClick();
     generateRoute(jeroo.x, jeroo.y, endY+1, endX+1, function(route){
-        runRoute(jeroo, route);
+        runRoute(jeroo, route, delay_per_action);
     });
 }

@@ -60156,11 +60156,12 @@
             i.kc("routerLink", t.getTutorialUrl());
         }
       }
-      let Br = (() => {
+      let class_jerooEditor = (() => {
           class t {
             constructor(t, e, n, i, r) {
               (this.islandService = t),
                 (this.messageService = e),
+              (window.jerooEditor = this),
                 (this.printService = n),
                 (this.selectedTileTypeService = i),
                 (this.dialog = r),
@@ -61565,7 +61566,7 @@
               .then(n.bind(null, "7XJi"))
               .then((t) => t.HelpModule),
         },
-        { path: "dashboard", component: Br },
+        { path: "dashboard", component: class_jerooEditor },
         { path: "", redirectTo: "dashboard", pathMatch: "full" },
         {
           path: "print",
