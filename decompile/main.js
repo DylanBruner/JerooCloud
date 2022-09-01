@@ -846,12 +846,14 @@
             _recaptureFocus() {
               this._containsFocus() ||
                 ((!this._config.autoFocus ||
-                  !this._focusTrap.focusInitialElement()));
+                  !this._focusTrap.focusInitialElement()) &&
+                  this._elementRef.nativeElement.focus());
             }
             _trapFocus() {
               this._config.autoFocus
                 ? this._focusTrap.focusInitialElementWhenReady()
-                : this._containsFocus()
+                : this._containsFocus() ||
+                  this._elementRef.nativeElement.focus();
             }
             _restoreFocus() {
               const t = this._elementFocusedBeforeDialogWasOpened;
@@ -869,7 +871,7 @@
                         this._closeInteractionType
                       ),
                       (this._closeInteractionType = null))
-                    : t);
+                    : t.focus());
               }
               this._focusTrap && this._focusTrap.destroy();
             }
@@ -885,7 +887,7 @@
             }
             _focusDialogContainer() {
               this._elementRef.nativeElement.focus &&
-                this._elementRef.nativeElement
+                this._elementRef.nativeElement.focus();
             }
             _containsFocus() {
               const t = this._elementRef.nativeElement,
@@ -8319,7 +8321,7 @@
               hostBindings: function (t, e) {
                 1 & t &&
                   i.ac("focus", function () {
-                    return e._inputElement.nativeElement
+                    return e._inputElement.nativeElement.focus();
                   }),
                   2 & t &&
                     (i.Cb("tabindex", -1)("id", e.id)("aria-label", null)(
@@ -13658,7 +13660,7 @@
                     .parentElement;
                 for (; t; ) {
                   if ("menu" === t.getAttribute("role")) {
-                    t
+                    t.focus();
                     break;
                   }
                   t = t.parentElement;
@@ -13970,7 +13972,7 @@
               this.restoreFocus &&
                 (this._openedBy
                   ? this.triggersSubmenu() || this.focus(this._openedBy)
-                  : this),
+                  : this.focus()),
                 (this._openedBy = null);
             }
             _setIsMenuOpen(t) {
@@ -15904,7 +15906,7 @@
               (r || (r = t.content.appendChild(document.createElement("span"))),
               r.setAttribute("cm-marker", n.id)),
             r &&
-              (t.cm.display.input, t.content.appendChild(r)),
+              (t.cm.display.input.setUneditable(r), t.content.appendChild(r)),
             (t.pos += e),
             (t.trailingSpace = !1);
         }
@@ -16112,7 +16114,7 @@
             else if (n) {
               var i = hn(e);
               (e.background = i.insertBefore(T("div", null, n), i.firstChild)),
-                t.display.input;
+                t.display.input.setUneditable(e.background);
             }
           })(t, e),
             e.line.wrapClass
@@ -16142,7 +16144,7 @@
                 i.gutterTotalWidth +
                 "px"
             )),
-              t.display.input,
+              t.display.input.setUneditable(e.gutterBackground),
               r.insertBefore(e.gutterBackground, e.text);
           }
           var s = e.line.gutterMarkers;
@@ -16157,7 +16159,7 @@
                   "px"
               ));
             if (
-              (t.display.input,
+              (t.display.input.setUneditable(a),
               o.insertBefore(a, e.text),
               e.line.gutterClass && (a.className += " " + e.line.gutterClass),
               !t.options.lineNumbers ||
@@ -16235,7 +16237,7 @@
                 );
               l.handleMouseEvents || c.setAttribute("cm-ignore-events", "true"),
                 _n(l, c, n, i),
-                t.display.input,
+                t.display.input.setUneditable(c),
                 r && l.above
                   ? s.insertBefore(c, n.gutter || n.text)
                   : s.appendChild(c),
@@ -17215,7 +17217,7 @@
           }
         }
         function xi(t) {
-          t.state.focused || (t.display.input, Si(t));
+          t.state.focused || (t.display.input.focus(), Si(t));
         }
         function Ci(t) {
           (t.state.delayingBlurEvent = !0),
@@ -17595,7 +17597,7 @@
                   ht(e, "mousedown", function () {
                     t.state.focused &&
                       setTimeout(function () {
-                        return t.display.input;
+                        return t.display.input.focus();
                       }, 0);
                   }),
                   e.setAttribute("cm-not-content", "true");
@@ -18088,7 +18090,7 @@
                 t &&
                 t.activeElt &&
                 t.activeElt != I() &&
-                (t.activeElt,
+                (t.activeElt.focus(),
                 !/^(INPUT|TEXTAREA)$/.test(t.activeElt.nodeName) &&
                   t.anchorNode &&
                   R(document.body, t.anchorNode) &&
@@ -20347,7 +20349,7 @@
                   return (
                     e.state.draggingText(t),
                     void setTimeout(function () {
-                      return e.display.input;
+                      return e.display.input.focus();
                     }, 20)
                   );
                 try {
@@ -20364,7 +20366,7 @@
                       for (var p = 0; p < d.length; ++p)
                         ps(e.doc, "", d[p].anchor, d[p].head, "drag");
                     e.replaceSelection(h, "around", "paste"),
-                      e.display.input
+                      e.display.input.focus();
                   }
                 } catch (f) {}
               }
@@ -21169,7 +21171,7 @@
                         : ((uo = new po(n, t, e)), (ho = null), "single");
                     })(i, r)
                   : "single";
-              window,
+              window.focus(),
                 1 == r && e.state.selectingText && e.state.selectingText(t),
                 (i &&
                   (function (t, e, n, i, r) {
@@ -21261,9 +21263,9 @@
                                               r.wrapper.ownerDocument.body.focus(
                                                 { preventScroll: !0 }
                                               ),
-                                                r.input;
+                                                r.input.focus();
                                             }, 20)
-                                          : r.input);
+                                          : r.input.focus());
                                   }),
                                   u = function (t) {
                                     s =
@@ -21285,7 +21287,7 @@
                                   ht(r.scroller, "drop", c),
                                   Ci(t),
                                   setTimeout(function () {
-                                    return r.input;
+                                    return r.input.focus();
                                   }, 20);
                               })(t, i, e, s)
                             : (function (t, e, n, i) {
@@ -21505,7 +21507,7 @@
                                 function m(e) {
                                   (t.state.selectingText = !1),
                                     (p = 1 / 0),
-                                    e && (yt(e), r.input),
+                                    e && (yt(e), r.input.focus()),
                                     pt(r.wrapper.ownerDocument, "mousemove", g),
                                     pt(r.wrapper.ownerDocument, "mouseup", b),
                                     (s.history.lastSelOrigin = null);
@@ -21523,7 +21525,7 @@
                     : 2 == r
                     ? (i && Kr(e.doc, i),
                       setTimeout(function () {
-                        return n.input;
+                        return n.input.focus();
                       }, 20))
                     : 3 == r && (C ? e.display.input.onContextMenu(t) : Ci(e)));
             }
@@ -21657,7 +21659,7 @@
             keySeq: null,
             specialChars: null,
           }),
-          e.autofocus && !b && s.input,
+          e.autofocus && !b && s.input.focus(),
           o &&
             a < 11 &&
             setTimeout(function () {
@@ -21748,7 +21750,7 @@
                       ? t.findWordAt(a)
                       : new Cr(te(a.line, 0), ae(t.doc, te(a.line + 1, 0)))),
                     t.setSelection(o.anchor, o.head),
-                    t,
+                    t.focus(),
                     yt(n);
                 }
                 r();
@@ -22353,7 +22355,7 @@
               L(l),
                 setTimeout(function () {
                   i.display.lineSpace.removeChild(a),
-                    c,
+                    c.focus(),
                     c == r && n.showPrimarySelection();
                 }, 50);
             }
@@ -22503,7 +22505,7 @@
               ((this.selectionInEditor() &&
                 document.activeElement == this.div) ||
                 this.showSelection(this.prepareSelection(), !0),
-              this.div);
+              this.div.focus());
           }),
           (No.prototype.blur = function () {
             this.div.blur();
@@ -22562,7 +22564,7 @@
                     preventDefault: Math.abs,
                   }),
                   this.blur(),
-                  void this
+                  void this.focus()
                 );
               if (!this.composing) {
                 this.rememberSelection();
@@ -22736,7 +22738,7 @@
               (this.composing = null),
               this.updateFromDOM(),
               this.div.blur(),
-              this.div);
+              this.div.focus());
           }),
           (No.prototype.readFromDOMSoon = function () {
             var t = this;
@@ -22757,7 +22759,7 @@
               });
           }),
           (No.prototype.setUneditable = function (t) {
-            t.contentEditable = "true";
+            t.contentEditable = "false";
           }),
           (No.prototype.onKeyPress = function (t) {
             0 == t.charCode ||
@@ -22823,7 +22825,7 @@
             ht(t.scroller, "paste", function (e) {
               if (!xn(t, e) && !mt(i, e)) {
                 if (!r.dispatchEvent)
-                  return (i.state.pasteIncoming = +new Date()), void n;
+                  return (i.state.pasteIncoming = +new Date()), void n.focus();
                 var s = new Event("paste");
                 (s.clipboardData = e.clipboardData), r.dispatchEvent(s);
               }
@@ -22909,7 +22911,7 @@
               (!b || I() != this.textarea)
             )
               try {
-                this.textarea;
+                this.textarea.focus();
               } catch (At) {}
           }),
           (Wo.prototype.blur = function () {
@@ -23026,7 +23028,7 @@
                   (o ? "rgba(255, 255, 255, .05)" : "transparent") +
                   ";\n      outline: none; border-width: 0; outline: none; overflow: hidden; opacity: .05; filter: alpha(opacity=5);"),
                 l && (u = window.scrollY),
-                i.input,
+                i.input.focus(),
                 l && window.scrollTo(null, u),
                 i.input.reset(),
                 n.somethingSelected() || (r.value = e.prevInput = " "),
@@ -23342,7 +23344,7 @@
             (t.prototype = {
               constructor: t,
               focus: function () {
-                window, this.display.input;
+                window.focus(), this.display.input.focus();
               },
               setOption: function (t, n) {
                 var i = this.options,
@@ -23713,7 +23715,7 @@
                 return this.display.input.getField() == I();
               },
               isReadOnly: function () {
-                return false
+                return !(!this.options.readOnly && !this.doc.cantEdit);
               },
               scrollTo: er(function (t, e) {
                 Ii(this, t, e);
@@ -24543,10 +24545,24 @@
               this.toggle(Object(l.c)(t));
             }
             _takeFocus() {
-
+              this.autoFocus &&
+                this._focusTrap &&
+                this._focusTrap.focusInitialElementWhenReady().then((t) => {
+                  t ||
+                    "function" != typeof this._elementRef.nativeElement.focus ||
+                    this._elementRef.nativeElement.focus();
+                });
             }
             _restoreFocus() {
-
+              this.autoFocus &&
+                (this._elementFocusedBeforeDrawerWasOpened
+                  ? this._focusMonitor.focusVia(
+                      this._elementFocusedBeforeDrawerWasOpened,
+                      this._openedVia
+                    )
+                  : this._elementRef.nativeElement.blur(),
+                (this._elementFocusedBeforeDrawerWasOpened = null),
+                (this._openedVia = null));
             }
             _isFocusWithinDrawer() {
               var t;
@@ -24559,7 +24575,8 @@
             ngAfterContentInit() {
               (this._focusTrap = this._focusTrapFactory.create(
                 this._elementRef.nativeElement
-              ))
+              )),
+                this._updateFocusTrapState();
             }
             ngAfterContentChecked() {
               this._platform.isBrowser && (this._enableAnimations = !0);
@@ -26324,7 +26341,7 @@
                       (!this.multiple &&
                         this._keyManager.activeItem &&
                         this._keyManager.activeItem._selectViaInteraction(),
-                      this,
+                      this.focus(),
                       this.close());
                   }),
                 this._keyManager.change
@@ -26347,7 +26364,7 @@
                     t.isUserInput &&
                       !this.multiple &&
                       this._panelOpen &&
-                      (this.close(), this);
+                      (this.close(), this.focus());
                 }),
                 Object(m.a)(...this.options.map((t) => t._stateChanges))
                   .pipe(Object(x.a)(t))
@@ -26364,7 +26381,7 @@
                       ? this._selectionModel.select(t)
                       : this._selectionModel.deselect(t)),
                   e && this._keyManager.setActiveItem(t),
-                  this.multiple && (this._sortValues(), e && this))
+                  this.multiple && (this._sortValues(), e && this.focus()))
                 : (t.deselect(),
                   this._selectionModel.clear(),
                   null != this.value && this._propagateChanges(t.value)),
@@ -26557,7 +26574,7 @@
               this._ariaDescribedby = t.join(" ");
             }
             onContainerClick() {
-              this, this.open();
+              this.focus(), this.open();
             }
             get shouldLabelFloat() {
               return this._panelOpen || !this.empty;
@@ -35010,7 +35027,7 @@
             }
           }
           if (a.length) {
-            e && t.state.focused && t;
+            e && t.state.focused && t.focus();
             var d = function () {
               t.operation(function () {
                 for (var t = 0; t < a.length; t++) a[t].clear();
@@ -38734,7 +38751,7 @@
                   );
             }
             onContainerClick() {
-              this.focused || this;
+              this.focused || this.focus();
             }
           }
           return (
@@ -45691,17 +45708,17 @@
                   "Found use of deprecated attribute 'cdk-focus-initial', use 'cdkFocusInitial' instead. The deprecated attribute will be removed in 8.0.0",
                   t
                 ),
-              t,
+              t.focus(),
               !0)
             : this.focusFirstTabbableElement();
         }
         focusFirstTabbableElement() {
           const t = this._getRegionBoundary("start");
-          return t && t, !!t;
+          return t && t.focus(), !!t;
         }
         focusLastTabbableElement() {
           const t = this._getRegionBoundary("end");
-          return t && t, !!t;
+          return t && t.focus(), !!t;
         }
         hasAttached() {
           return this._hasAttached;
@@ -45811,7 +45828,7 @@
             ngOnDestroy() {
               this.focusTrap.destroy(),
                 this._previouslyFocusedElement &&
-                  (this._previouslyFocusedElement,
+                  (this._previouslyFocusedElement.focus(),
                   (this._previouslyFocusedElement = null));
             }
             ngAfterContentInit() {
@@ -49886,7 +49903,7 @@
             super(), (this.elementRef = t);
           }
           focus() {
-            this.elementRef.nativeElement;
+            this.elementRef.nativeElement.focus();
           }
           getOffsetLeft() {
             return this.elementRef.nativeElement.offsetLeft;
@@ -50066,7 +50083,7 @@
                 (this._showPaginationControls && this._scrollToLabel(t),
                 this._items && this._items.length)
               ) {
-                this._items.toArray()[t];
+                this._items.toArray()[t].focus();
                 const e = this._tabListContainer.nativeElement,
                   n = this._getLayoutDirection();
                 e.scrollLeft = "ltr" == n ? 0 : e.scrollWidth - e.offsetWidth;
@@ -58054,13 +58071,13 @@
                 i.removeLineClass(r, "background", "errorline-highlight"));
           }
           isReadOnly() {
-            return false
+            return !!this.editor && this.editor.getOption("readOnly");
           }
           setReadOnly(t) {
             var e;
             null === (e = this.editor) ||
               void 0 === e ||
-              _
+              e.setOption("readOnly", t);
           }
           refresh() {
             var t;
@@ -58068,7 +58085,7 @@
           }
           focus() {
             var t;
-            null === (t = this.editor) || void 0 === t || t;
+            null === (t = this.editor) || void 0 === t || t.focus();
           }
           getCursor() {
             var t;
@@ -58484,13 +58501,13 @@
             ngAfterViewInit() {
               setTimeout(() => {
                 const t = this.getSelectedEditor();
-                t && (t.refresh(), t);
+                t && (t.refresh(), t.focus());
               }),
                 this.codeService.getCursorPosition().subscribe((t) => {
                   this.selectedTabIndex = t.pane;
                   const e = this.getSelectedEditor();
                   null == e || e.refresh(),
-                    null == e || e,
+                    null == e || e.focus(),
                     null == e || e.setCursor({ line: t.lnum - 1, ch: t.cnum });
                 });
             }
@@ -58517,8 +58534,8 @@
               try {
                 this.mainMethodEditor &&
                   this.extensionMethodsEditor &&
-                  (//this.mainMethodEditor.setReadOnly(!0),
-                  //this.extensionMethodsEditor.setReadOnly(!0),
+                  (this.mainMethodEditor.setReadOnly(!0),
+                  this.extensionMethodsEditor.setReadOnly(!0),
                   this.bytecodeService.executeInstructionsUntilLNumChanges(
                     this.instructions,
                     this.islandService
@@ -58553,8 +58570,8 @@
                 try {
                   this.mainMethodEditor &&
                     this.extensionMethodsEditor &&
-                    (//this.mainMethodEditor.setReadOnly(!0),
-                    //this.extensionMethodsEditor.setReadOnly(!0),
+                    (this.mainMethodEditor.setReadOnly(!0),
+                    this.extensionMethodsEditor.setReadOnly(!0),
                     this.bytecodeService.executeInstructionsUntilLNumChanges(
                       this.instructions,
                       this.islandService
@@ -58575,10 +58592,10 @@
             cleanupExecution() {
               var t;
               null != this.mainMethodEditor &&
-                (_,
+                (this.mainMethodEditor.setReadOnly(!1),
                 null === (t = this.extensionMethodsEditor) ||
                   void 0 === t ||
-                  _,
+                  t.setReadOnly(!1),
                 this.unhighlightPreviousLine(),
                 (this.previousInstruction = null),
                 this.messageService.clear(),
@@ -58597,10 +58614,10 @@
                 );
                 t.e === Hn.Main || "NEW" === t.op
                   ? (this.mainMethodEditor.highlightLine(t.f),
-                    (_))
+                    (this.selectedTabIndex = Hn.Main))
                   : t.e === Hn.Extensions &&
                     (this.extensionMethodsEditor.highlightLine(t.f),
-                    (_)),
+                    (this.selectedTabIndex = Hn.Extensions)),
                   (this.previousInstruction = t);
               } else this.previousInstruction = null;
             }
@@ -58683,10 +58700,10 @@
                 this.unhighlightPreviousLine(),
                 null === (t = this.mainMethodEditor) ||
                   void 0 === t ||
-                  _,
+                  t.setReadOnly(!1),
                 null === (e = this.extensionMethodsEditor) ||
                   void 0 === e ||
-                  _;
+                  e.setReadOnly(!1);
             }
             pauseState() {
               (this.editorState.paused = !0),
@@ -58704,7 +58721,7 @@
               this.selectedTabIndex = t;
               const e = this.getSelectedEditor();
               setTimeout(() => {
-                null == e || e.refresh(), null == e || e;
+                null == e || e.refresh(), null == e || e.focus();
               });
             }
             getHelpUrl() {
