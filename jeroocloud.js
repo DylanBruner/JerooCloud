@@ -31,11 +31,7 @@ menu_item.addEventListener('click', () => {
     else if (option == 'save'){
         target_file = prompt('Enter save name')
         fetch('/update_file/' + btoa(target_file) + '/' + btoa(getCode()) + '/' + btoa(getBoard()))
-<<<<<<< HEAD
         alertify.success('Saved!')
-=======
-        alertify.success('Enviorment Saved')
->>>>>>> ad1e00ad99feb9ab7a94f8d2bda7e02373956065
     }
     else if (option == 'load'){
         target_file = prompt('Enter file name')
