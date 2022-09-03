@@ -79,8 +79,12 @@ def get_file(filename: str):
 def list_files():
     return '\n'.join(os.listdir('programs'))
 
+
 @app.errorhandler(404)
 def page_not_found(e):
+    #Dont really want to forward all requests to jeroo.org
+    if all(path not in request.url for path in ['favicon.ico', '/images', '/beta']) and request.path.strip() != '/' and request.path.strip() != '':
+        return '404', 404
     data = requests.get(base_url + request.path).content
     if '.js' in request.path:
         if 'main' in request.path:
