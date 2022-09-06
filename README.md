@@ -1,3 +1,7 @@
+```
+How it actually works.
+```
+
 ```javascript
 Documentation
 Note if running at speed 4+ a 'blank' method may be needed to prefix these functions, usage ex below
