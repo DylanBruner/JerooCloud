@@ -1,5 +1,5 @@
 ```javascript
-\\Documentation
+Documentation
 Note if running at speed 4+ a 'blank' method may be needed to prefix these functions, usage ex below
 The blank function can be aquired from the 'Jeroo Features' menu by typing 'copy-helpers' or 'copy-blank'
 jeroo1.blank();//tts(Hello!)
