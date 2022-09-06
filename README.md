@@ -1,12 +1,7 @@
-# JerooCloud
-I'm not sure if you would be interested but here is a list of all the
-things I've done to the website
-
+```javascript
 //Documentation
-//Note if running at speed 4+ a 'blank' method may be needed to prefix
-these functions, usage ex below
-//The blank function can be aquired from the 'Jeroo Features' menu by
-typing 'copy-helpers' or 'copy-blank'
+//Note if running at speed 4+ a 'blank' method may be needed to prefix these functions, usage ex below
+//The blank function can be aquired from the 'Jeroo Features' menu by typing 'copy-helpers' or 'copy-blank'
 //jeroo1.blank();//tts(Hello!)
 
 //jeroo_id = the order you created them starting at 0
@@ -14,10 +9,8 @@ typing 'copy-helpers' or 'copy-blank'
 //testJeroo.<anyMethod>;//<function>
 
 //teleportById(<jeroo_id>, <x>, <y>)
-//pathfindTo(<jeroo_id, <x>, <y>) [Notice when pathfinding the code
-will pause and resume after it has finished, as of now do NOT
-pause/restart the program manually,
-//   when pathfinding as it will make duplicate jeroos that are buggy]
+//pathfindTo(<jeroo_id, <x>, <y>) [Notice when pathfinding the code will pause and resume after it has finished, as of now do NOT pause/restart the program manually,
+//								   when pathfinding as it will make duplicate jeroos that are buggy]
 //teleport(<target_x>, <target_y>, <to_x>, <to_y>)
 //ghost(<true/false>) disable collisions and rendering of the jeroo
 //playBoomSound()
@@ -38,20 +31,18 @@ pause/restart the program manually,
 // - Other small touchups
 
 //Jeroo Features
-// the help command will list all the features and what they do as
-some aren't worth documenting here
+// the help command will list all the features and what they do as some aren't worth documenting here
 // - All inline features listed above
 // - speed-modifier,
-//   - When enabled and the speed slider is set to '6' the delay per
-action can be set to
+//   - When enabled and the speed slider is set to '6' the delay per action can be set to
 //     whatever you like for example 1000ms
 // - toggle-board - hide the board
 // - copy-helpers - a few usefull methods that are used a lot
-// - copy-blank   - needed for running Jeroo Features inline code at
-higher speed, documented above
+// - copy-blank   - needed for running Jeroo Features inline code at higher speed, documented above
 // - toggle       - disable or enable all JF Features
 
 //Jeroo Cloud
 // - list - list all files saved in the cloud
 // - save - save a open file (including the board)
 // - load - load a saved (program/board/both) from the cloud
+```
