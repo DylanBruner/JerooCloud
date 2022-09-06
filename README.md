@@ -1,12 +1,13 @@
-```
+
 How it actually works.
-
+<br>
 The website acts as a proxy for the real Jeroo site, when it first started it forwarded almost all requests to the Jeroo website. Now almost all of the files are stored locally because of the heavy modification I've done to them. The custom code is added by rapidly checking the HTML and getting the active line and then running Javascript based on the results. The speed modifier which was implemented terribly overwrites the setTimeout function with a custom one that changes any delays of '2' to the specified delay. The dark theme is just a javascript file which modifies all the HTML when it's loaded, I do want to just modify the main HTML file eventually.
-
+<br>
 NOTE: The compiler hasn't really been modified but I'm working on renaming variables and exposing classes for possible better ways to run custom functions in the future.
-
+<br>
 That should be most of the important stuff
-```
+
+<br>
 
 ```javascript
 Documentation
