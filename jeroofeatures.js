@@ -166,6 +166,8 @@ setTimeout(() => {
         })
         return jerooList;
     }
+
+    var pathfindToNearestFlower=o=>{for(var e=0;e<jerooClass.cols;e++)for(var r=0;r<jerooClass.rows;r++)if(tile=jerooClass.getTile(e,r),"F"==tile)return console.log("found flower at",r,e),target_jeroo=getJerooList()[o],void generateRoute(target_jeroo.x,target_jeroo.y,e,r,o=>{console.log("Route generated!"),runRoute(target_jeroo,o)})};
     
     function teleportJeroo(jeroo, x, y){
         jeroo.x = x; jeroo.y = y;
@@ -218,6 +220,16 @@ setTimeout(() => {
             args = line_text.split('pathfindTo(')[1].split(')')[0].split(',')
             logAction('Pathfinding...')
             generateAndRun(getJerooById(Number(args[0])), Number(args[1]), Number(args[2]))
+        }
+
+        else if (line_text.includes('pathfindToFlower(')){
+            jeroo_id = Number(line_text.split('pathfindToFlower(')[1].split(')')[0])
+            try {
+                pathfindToNearestFlower(jeroo_id)
+                logAction('Pathfinding...')
+            } catch (e){
+                alertify.error(e)
+            }
         }
     }
     //====================
