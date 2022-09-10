@@ -11,7 +11,7 @@ That should be most of the important stuff
 <h1>Note(s)</h1>
 <br>
 <a>playing sounds doesn't currently work, i'll fix it whenever I'm interested in sounds again</a>
-<br>
+<br><br>
 
 <a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function,</a>
 <a>this means it can be ran at whatever speed you want</a>
