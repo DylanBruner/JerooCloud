@@ -11,8 +11,8 @@ That should be most of the important stuff
 <h1>Note</h1>
 <br>
 
-<a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function</a>
-
+<a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function,</a>
+<a>this means it can be ran at whatever speed you want</a>
 
 <br>
 <h1>Documentation</h1>
