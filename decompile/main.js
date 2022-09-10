@@ -57780,7 +57780,7 @@
                     0,
                     t.f
                   );
-                if (this.jerooArray.length >= 4)
+                if (this.jerooArray.length >= 4)//Maybe remove the jeroo limit
                   throw new Ui("INSTANTIATION ERROR: Too many jeroos", 0, t.f);
                 try {
                   const s = new class_JerooObject(t.a, i, n, t.d, t.e);
@@ -57919,6 +57919,7 @@
       })();
       var qi = n("wZkO");
       const Ki = ["editorTextarea"];
+      //Editor Class (I think)
       let $i = (() => {
         class t {
           constructor(t) {
@@ -57929,10 +57930,17 @@
               (this.preferencesVal = { fontSize: 12, colorTheme: Vn.Default }),
               (this.langVal = Bn.Java);
 
+<<<<<<< HEAD
               if (window.editors == null){
                 window.editors = [this]
               }
               else {window.editors.push(this)}
+=======
+              if (window.codeEditiors == null){
+                window.codeEditors = [];
+                window.codeEditors.push(this);
+              }
+>>>>>>> ab1c9ee684cfa47e5a7b258a7a70c495fbdfcb85
           }
           get preferences() {
             return this.preferencesVal;
@@ -58073,6 +58081,8 @@
             r &&
               (null === (n = this.editor) ||
                 void 0 === n ||
+                
+                
                 n.removeLineClass(r, "background", "activeline-highlight"),
               null === (i = this.editor) ||
                 void 0 === i ||
