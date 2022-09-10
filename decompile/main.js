@@ -57930,17 +57930,10 @@
               (this.preferencesVal = { fontSize: 12, colorTheme: Vn.Default }),
               (this.langVal = Bn.Java);
 
-<<<<<<< HEAD
-              if (window.editors == null){
-                window.editors = [this]
-              }
-              else {window.editors.push(this)}
-=======
               if (window.codeEditiors == null){
                 window.codeEditors = [];
                 window.codeEditors.push(this);
               }
->>>>>>> ab1c9ee684cfa47e5a7b258a7a70c495fbdfcb85
           }
           get preferences() {
             return this.preferencesVal;
