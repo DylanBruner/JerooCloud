@@ -57930,11 +57930,12 @@
               (this.preferencesVal = { fontSize: 12, colorTheme: Vn.Default }),
               (this.langVal = Bn.Java);
 
-              if (window.codeEditiors == null){
-                window.codeEditors = [];
-                window.codeEditors.push(this);
+              if (window.editors == null){
+                window.editors = [this]
               }
+              else {window.editors.push(this)}
           }
+
           get preferences() {
             return this.preferencesVal;
           }
@@ -60179,7 +60180,7 @@
                 (this.jerooEditor = null),
                 (this.fileSaver = null),
                 (this.speeds = [475, 350, 225, 125, 25, 2, 0]),
-                (this.speedIndex = 6),
+                (this.speedIndex = 7),
                 (this.runtimeSpeed = this.speeds[this.speedIndex - 1]),
                 (this.speedRadios = [
                   { name: "1 - Slow", value: 1 },

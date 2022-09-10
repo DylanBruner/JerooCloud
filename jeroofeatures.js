@@ -26,6 +26,14 @@ setTimeout(() => {
     }, 2000)
 }, 2000)
 
+setTimeout(() => {
+    if (localStorage['speedup'] == 'true'){
+        var script = document.createElement('script');
+        script.src = '/speedup.js';
+        document.head.appendChild(script);
+    
+    }
+}, 5000)
 
 //If run speed is already defined dont run anything else
 
@@ -124,6 +132,7 @@ setTimeout(() => {
                                             "disable-menu - (stop injecting the menubar button)",
                                             "copy-blank - (copy the method required to run jf commands at full speed)",
                                             "toggle-board - (toggle the board)",
+                                            "toggle-speedup - (toggle speedup.js)",
                                             "github - (opens the github page)"].join('\n'))}
                 else if (option == 'toggle'){enabled = !enabled; alertify.success('' ? 'Disabled Jeroo Features' : 'Enabled Jeroo Features')}
                 else if (option == 'toggle-log'){localStorage['logActions'] = localStorage['logActions'] == 'true' ? 'false' : 'true'; alertify.success('Logging ' + (localStorage['logActions'] == 'true' ? 'Enabled' : 'Disabled'))}
@@ -138,6 +147,15 @@ setTimeout(() => {
                 else if (option == 'disable-menu'){localStorage['disableMenu'] = 'true'; alertify.success('Menu Disabled')}
                 else if (option == 'copy-blank'){copyTextToClipboard("method blank(){turn(LEFT); turn(LEFT); turn(LEFT); turn(LEFT);}")}
                 else if (option == 'github'){window.open('https://github.com/DylanBruner/JerooFeatures')}
+                else if (option == 'toggle-speedup'){
+                    if (localStorage['speedup'] == 'true'){
+                        localStorage['speedup'] = 'false';
+                        alertify.error('Speedup Disabled')
+                    } else {
+                        localStorage['speedup'] = 'true';
+                        alertify.success('Speedup Enabled')
+                    }
+                }
                 else if (option == 'speed-modifier'){
                     runSpeed = prompt('Enter a speed delay (ex. 0.5)ms')
                     alertify.success('Speed set to ' + runSpeed)
