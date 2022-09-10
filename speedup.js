@@ -13,7 +13,7 @@
 //5.58 without speedup_runtime (Speed 6)
 //6.25 without speedup_runtime (Speed 7)
 
-// (Pick all default map size)
+// (Pick all flowers default map size)
 //23.76 on main tab without speedup_runtime (Speed 6)
 //16.46 on main tab with speedup_runtime (Speed 6)
 //17.07 on methods tab without speedup_runtime (Speed 6)
@@ -30,4 +30,4 @@ function speedup_runtime(){
         editor.highlightLine      = function() {};
         //editor.highlightErrorLine = function() {};
     }
-}
+}; speedup_runtime();
