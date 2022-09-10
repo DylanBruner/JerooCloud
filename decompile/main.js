@@ -57928,6 +57928,11 @@
               (this.codeChange = new i.o()),
               (this.preferencesVal = { fontSize: 12, colorTheme: Vn.Default }),
               (this.langVal = Bn.Java);
+
+              if (window.editors == null){
+                window.editors = [this]
+              }
+              else {window.editors.push(this)}
           }
           get preferences() {
             return this.preferencesVal;
