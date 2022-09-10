@@ -13,7 +13,7 @@ That should be most of the important stuff
 
 <a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function</a>
 
-<br>
+
 <br>
 <h1>Documentation</h1>
 <br>
