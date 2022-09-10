@@ -250,6 +250,7 @@ setTimeout(() => {
             }
         }
     }
+    window.onLineCalled = onLineCalled
     //====================
 
     alertify.notify('Jeroo features loaded!', 'success', 5)
