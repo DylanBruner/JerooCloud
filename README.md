@@ -8,7 +8,9 @@ NOTE: The compiler hasn't really been modified but I'm working on renaming varia
 That should be most of the important stuff
 
 <br>
-<h1>Note</h1>
+<h1>Note(s)</h1>
+<br>
+<a>playing sounds doesn't currently work, i'll fix it whenever I'm interested in sounds again</a>
 <br>
 
 <a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function,</a>
