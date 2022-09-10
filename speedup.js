@@ -25,8 +25,13 @@
 function speedup_runtime(){
     for (var i = 0; i < editors.length; i++) {
         var editor = editors[i];
+        window.disableHTMLRead = true; //Stop jeroo features from reading the HTML 
         editor.unhighlightLine    = function() {};
-        editor.highlightLine      = function() {};
+        editor.highlightLine      = function(t) {
+            setTimeout(() => {
+                window.onLineCalled(t, this.editor.getLineHandle(t-1)['text'])
+            },0)
+        };
         //editor.highlightErrorLine = function() {};
     }
     console.log("speedup.js - removed function calls");

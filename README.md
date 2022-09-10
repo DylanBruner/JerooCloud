@@ -8,6 +8,13 @@ NOTE: The compiler hasn't really been modified but I'm working on renaming varia
 That should be most of the important stuff
 
 <br>
+<h1>Note</h1>
+<br>
+
+<a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function</a>
+
+<br>
+<br>
 <h1>Documentation</h1>
 <br>
 
@@ -49,8 +56,7 @@ Jeroo Features
  - speed-modifier,
    - When enabled and the speed slider is set to '6' the delay per action can be set to
      whatever you like for example 1000ms
- - toggle-speedup - toggle the loading of speedup.js which can provide a 33%ish increase in speeds, 
-                    warning this will break the custom inline code provided by JerooFeatures, fix coming soon 
+ - toggle-speedup - toggle the loading of speedup.js which can provide a 33%ish increase in speeds
  - toggle-board - hide the board
  - copy-helpers - a few usefull methods that are used a lot
  - copy-blank   - needed for running Jeroo Features inline code at higher speed, documented above

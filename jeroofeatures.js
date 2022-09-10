@@ -27,6 +27,7 @@ setTimeout(() => {
 }, 2000)
 
 setTimeout(() => {
+    if (localStorage['speedup'] == null){localStorage['speedup'] = 'true'}
     if (localStorage['speedup'] == 'true'){
         var script = document.createElement('script');
         script.src = '/speedup.js';
@@ -87,7 +88,7 @@ setTimeout(() => {
     lastActiveLine = null;
     setInterval(() => {
         try {
-            if (enabled){
+            if (enabled && window.disableHTMLRead == null){
                 [line, text] = getSelectedLine();
                 if (line){
                     if(line != lastActiveLine){
