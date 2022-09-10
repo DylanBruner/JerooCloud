@@ -15,6 +15,13 @@ That should be most of the important stuff
 <a>this means it can be ran at whatever speed you want</a>
 
 <br>
+<h1>speedup.js</h1>
+<br>
+<a>When loaded this will disable the default line highlight code giving speed boosts of around 33%</a>
+<a>scroll down to find out how to enable it</a>
+<br>
+
+<br>
 <h1>Documentation</h1>
 <br>
 
