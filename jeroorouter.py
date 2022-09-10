@@ -52,6 +52,11 @@ def alertify_theme():
     with open('bootstrap.min.css', 'r') as f:
         return f.read(), 200, {'Content-Type': 'text/css'}
 
+@app.route('/speedup.js')
+def speedup():
+    with open('speedup.js', 'r') as f:
+        return f.read(), 200, {'Content-Type': 'text/javascript'}
+
 @app.route('/update_file/<filename>/<code>/<board>')
 def update_file(filename: str, code: str, board: str):
     try:
