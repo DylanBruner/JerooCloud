@@ -58,6 +58,7 @@ UI
  - Speed defaults to 6
  - Added a 7th speed that has a 0ms delay vs the 2ms delay at speed 6
  - Other small touchups
+ - Better syntax highlighting
 
 Jeroo Features
  the help command will list all the features and what they do as some aren't worth documenting here

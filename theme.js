@@ -92,4 +92,47 @@ document.addEventListener('click', tryApplyTheme)
 
 tryApplyTheme()
 
+
+//Modify the CSS rules asoociated with a class
+
+setInterval(() => {
+    elems = document.getElementsByClassName('cm-variable')
+    for (i = 0; i < elems.length; i++) {
+        if (elems[i].innerText == 'Jeroo'){
+            elems[i].style.color = '#14BA72'
+        }
+        else if (['hop', 'turn', 'isFlower', 'isNet', 'isWater', 'isClear', 
+                  'isFacing', 'hasFlower', 'give', 'toss', 'pick'].includes(elems[i].innerText)) {
+            elems[i].style.color = '#ECDE18'
+        }
+        else {
+            elems[i].style.color = '#36BDC1'
+        }
+    }
+    elems = document.getElementsByClassName('cm-keyword')
+    for (i = 0; i < elems.length; i++) {
+        if (['while', 'if', 'else','else if'].includes(elems[i].innerText)) {
+            elems[i].style.color = '#CE16A3'
+        }
+        else {
+            elems[i].style.color = '#168BCE'
+        }
+    }
+    elems = document.getElementsByClassName('cm-atom')
+    for (i = 0; i < elems.length; i++) {
+        if (['true', 'false'].includes(elems[i].innerText)) {
+            elems[i].style.color = '#CE16A3'
+        }
+        else if (elems[i].innerText == 'new'){
+            elems[i].style.color = '#168BCE'
+        }
+        else if (['NORTH', 'SOUTH', 'EAST', 'WEST'].includes(elems[i].innerText)) {
+            elems[i].style.color = '#168BCE'
+        }
+        else {
+            elems[i].style.color = '#CE16A3'
+        }
+    }
+}, 100)
+
 alertify.success('Theme applied')
