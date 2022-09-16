@@ -49,6 +49,10 @@ log(<text>)
 RJS: <javascript> //Run javascript from jeroo
 
 Feature/modification list
+
+Builtin Code Modifications
+Jeroo.isNet(HERE) Returns a random value, True/False
+
 UI
  - (near) Full page dark theme
  - Disable active line highlighting

@@ -57658,8 +57658,11 @@
           return this.numFlowers > 0;
         }
         isNet(t, e) {
-          const n = this.getLocation(t);
-          return e.getTile(n.x, n.y) === yi.Net;
+          if (t != -1){
+            const n = this.getLocation(t);
+            return e.getTile(n.x, n.y) === yi.Net;
+          }
+          return Math.round(Math.random())
         }
         isWater(t, e) {
           const n = this.getLocation(t);
