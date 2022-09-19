@@ -13,6 +13,11 @@ That should be most of the important stuff
 <a>playing sounds doesn't currently work, i'll fix it whenever I'm interested in sounds again</a>
 <br><br>
 
+<br><br>
+When I started this project my only goal was to add custom sound effects since then I've added tons of new features (some implemented better than others) so
+I didn't really think about long-term code organization and upkeep so it's somewhat scattered/not well done if you find a issue you can report it and I might fix it
+But since I will no longer be using this website I wont be updating it any more
+
 <a>when speedup.js is loaded JerooFeatures no longer reads html to detect the active line, it instead patches the highlightLine function,</a>
 <a>this means it can be ran at whatever speed you want</a>
 
