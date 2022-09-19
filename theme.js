@@ -102,7 +102,7 @@ setInterval(() => {
             elems[i].style.color = '#14BA72'
         }
         else if (['hop', 'turn', 'isFlower', 'isNet', 'isWater', 'isClear', 
-                  'isFacing', 'hasFlower', 'give', 'toss', 'pick'].includes(elems[i].innerText)) {
+                  'isFacing', 'hasFlower', 'give', 'toss', 'pick', 'isJeroo'].includes(elems[i].innerText)) {
             elems[i].style.color = '#ECDE18'
         }
         else {

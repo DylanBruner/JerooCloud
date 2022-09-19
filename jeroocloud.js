@@ -24,7 +24,10 @@ menu_item.addEventListener('click', () => {
     }
     else if (option == 'list'){
         fetch('/list_files').then(response => response.text()).then(data => {
-            alert(data)
+            let files = data.split('\n').filter(x => x != '').map((x, i) => i % 6 == 0 ? data.split('\n').slice(i, i + 6) : null).filter(x => x);
+            for (let i = 0; i < files.length; i++) {
+                alert(`Page (${i + 1}/${files.length}):\n${files[i].join('\n')}`)
+            }
         })
     }
 

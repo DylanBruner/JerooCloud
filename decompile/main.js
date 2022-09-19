@@ -57865,6 +57865,10 @@
                 this.cmpStack.push(n);
                 break;
               }
+              case "JFRAND": {
+                //Add random number command?
+                this.cmpStack.push(Math.round(Math.random()));
+              }
               case "NOT": {
                 const t = this.cmpStack.pop();
                 void 0 !== t && this.cmpStack.push(!t);
