@@ -55983,7 +55983,7 @@
           }
         }
       }
-      let Wn = (() => {
+      let class_codeService = (() => {
         class t {
           constructor() {
             (this.selectedLanguage = Bn.Java),
@@ -55993,6 +55993,7 @@
                 cnum: 0,
                 pane: Hn.Main,
               }));
+              this.removeNewLines = false;
           }
           genCodeStr(t) {
             let e = "";
@@ -56003,12 +56004,21 @@
                 throw new Error("Unsupported Language");
               e += "@PYTHON\n";
             }
-            return (
-              (e += t.extensionsMethodCode),
-              (e += "\n@@\n"),
-              (e += t.mainMethodCode),
-              e
-            );
+            if (!this.removeNewLines){
+              return (
+                (e += t.extensionsMethodCode),
+                (e += "\n@@\n"),
+                (e += t.mainMethodCode),
+                e
+              );
+            } else {
+              return (
+                (e += t.extensionsMethodCode.replaceAll("\n","")),
+                (e += "\n@@\n"),
+                (e += t.mainMethodCode.replaceAll("\n","")),
+                e
+              )
+            }
           }
           parseCodeFromStr(t) {
             let e = "",
@@ -56450,7 +56460,7 @@
                 i.Mb(Ht.h),
                 i.Mb(Nn.d),
                 i.Mb(ai),
-                i.Mb(Wn),
+                i.Mb(class_codeService),
                 i.Mb(ei)
               );
             }),
@@ -56639,7 +56649,7 @@
           (t.ɵfac = function (e) {
             return new (e || t)(
               i.Mb(Nn.d),
-              i.Mb(Wn),
+              i.Mb(class_codeService),
               i.Mb(gi),
               i.Mb(Ht.h),
               i.Mb(Ht.a)
@@ -58202,7 +58212,7 @@
         }
         return (
           (t.ɵfac = function (e) {
-            return new (e || t)(i.Mb(Wn));
+            return new (e || t)(i.Mb(class_codeService));
           }),
           (t.ɵcmp = i.Gb({
             type: t,
@@ -58274,7 +58284,7 @@
         }
         return (
           (t.ɵfac = function (e) {
-            return new (e || t)(i.Mb(Wn));
+            return new (e || t)(i.Mb(class_codeService));
           }),
           (t.ɵcmp = i.Gb({
             type: t,
@@ -58482,7 +58492,7 @@
           i.jc("value", t.value), i.Bb(1), i.Fc(" ", t.viewValue, " ");
         }
       }
-      let pr = (() => {
+      let mainLangCompiler = (() => {
           class t {
             constructor(t, e, n, r, s, o) {
               (this.messageService = t),
@@ -58509,6 +58519,7 @@
                   stopped: !1,
                 }),
                 (this.editorStateChange = new i.o());
+                window.codeService = this.codeService
             }
             get editorState() {
               return this.editorStateValue;
@@ -58825,7 +58836,7 @@
                 i.Mb(Fn),
                 i.Mb(Gi),
                 i.Mb(class_JeroosAndIslandStuff),
-                i.Mb(Wn),
+                i.Mb(class_codeService),
                 i.Mb(Ht.b),
                 i.Mb(ei)
               );
@@ -61328,7 +61339,7 @@
                 Ti.e,
                 Ti.a,
                 dn,
-                pr,
+                mainLangCompiler,
                 Sr,
                 hi.a,
                 kr.b,
@@ -61675,7 +61686,7 @@
                     return new (e || t)(
                       i.Mb(ki),
                       i.Mb(ai),
-                      i.Mb(Wn),
+                      i.Mb(class_codeService),
                       i.Mb(Ht.b),
                       i.Mb(Vt.a)
                     );
