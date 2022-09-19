@@ -1,8 +1,14 @@
 DISABLE_CUSTOM_CODE = false; //Usefull if you wanna host this for a class or something
+DISABLE_CLOUD       = false;
+
+function loadScript(url){
+    var script = document.createElement('script');
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
+
 //Load alertifyjs
-var script = document.createElement('script');
-script.src = 'https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js';
-document.head.appendChild(script);
+loadScript('https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js')
 
 var link = document.createElement('link');
 link.rel = 'stylesheet';
@@ -10,31 +16,17 @@ link.href = 'https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alerti
 document.head.appendChild(link);
 //Load /jeroocloud.js
 setTimeout(() => {
-    var script = document.createElement('script');
-    script.src = '/theme.js';
-    document.head.appendChild(script);
-
+    loadScript('/theme.js')
     setTimeout(() => {
-        var script = document.createElement('script');
-        script.src = '/jeroocloud.js';
-        document.head.appendChild(script);
-        var script = document.createElement('script');
-        script.src = '/movementcontroller.js';
-        document.head.appendChild(script);
-        var script = document.createElement('script');
-        script.src = '/pathfinding.js';
-        document.head.appendChild(script);
+        if (!DISABLE_CLOUD){loadScript('/jeroocloud.js')}
+        //loadScript('/movementcontroller.js')
+        loadScript('/pathfinding.js')
     }, 2000)
 }, 2000)
 
 setTimeout(() => {
     if (localStorage['speedup'] == null){localStorage['speedup'] = 'true'}
-    if (localStorage['speedup'] == 'true'){
-        var script = document.createElement('script');
-        script.src = '/speedup.js';
-        document.head.appendChild(script);
-    
-    }
+    if (localStorage['speedup'] == 'true'){loadScript('/speedup.js')}
 }, 5000)
 
 //If run speed is already defined dont run anything else
