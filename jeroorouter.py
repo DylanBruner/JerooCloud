@@ -1,4 +1,4 @@
-import requests, injector, base64, json, os
+import requests, base64, json, os
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -9,11 +9,15 @@ base_url = 'https://jeroo.org' #URL to redirect some requests to
 DISABLE_CLOUD   = False
 NEARLY_VANILLA  = False #Disable the loading of all ExposedJavascriptFiles, this remove nearly all the customizations but will leave a few and therefor run faster than 
                         #a vanilla jeroo.org
+DISABLE_THEME   = False #Might want to make this true, because not all menus display correctly with the theme and a beginner might get confused
+                        #Small warning, disabling the custom theme will turn line-highlighting back on which is great for beginners and debugging but awful for performance
+                        #but there will still be performance boosts from elsewhere so it's not that end of the world still it's a substantial
 
 #List of all javascript files that can be requested
-ExposedJavascriptFiles = ['jeroofeatures.js', 'jeroocloud.js', 'passwordprotect.js', 
-                          'easystar.js', 'theme.js', 'pathfinding.js', 'movementcontroller.js', 
+ExposedJavascriptFiles = ['jeroofeatures.js', 'jeroocloud.js', 'easystar.js', 
+                          'theme.js', 'pathfinding.js', 'movementcontroller.js', 
                           'speedup.js']
+if DISABLE_THEME: ExposedJavascriptFiles.remove('theme.js')#yeah, yeah ik it's simple
 
 #My patched version of the compiler, doesn't include a lot of changes so there really shouldn't be any errors with it
 @app.route('/beta/JerooCompiler.js')
@@ -75,8 +79,7 @@ def page_not_found(e):
     if '.js' in request.path:
         if 'main' in request.path:
             with open('decompile/main.js', 'rb') as f:
-                data = f.read()
-            data = injector.inject_javascript(data)
+                return f.read(), 200, {'Content-Type': 'text/javascript'}
         return data, 200, {'Content-Type': 'application/javascript'}
     elif '.css' in request.path:
         return data, 200, {'Content-Type': 'text/css'}

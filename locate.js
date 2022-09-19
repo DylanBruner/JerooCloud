@@ -1,3 +1,4 @@
+//Not even possible to load over the network, just some code i wrote for fun
 var pathfindToNearestFlower = (jeroo_id) => {
     for (var x = 0; x < jerooClass.cols; x++){
         for (var y = 0; y < jerooClass.rows; y++){
