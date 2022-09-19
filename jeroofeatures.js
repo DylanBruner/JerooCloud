@@ -1,3 +1,4 @@
+DISABLE_CUSTOM_CODE = false; //Usefull if you wanna host this for a class or something
 //Load alertifyjs
 var script = document.createElement('script');
 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.min.js';
@@ -195,6 +196,7 @@ setTimeout(() => {
 
     //Custom Stuff
     function onLineCalled(line_number, line_text){
+        if (DISABLE_CUSTOM_CODE){return}
         //Play the boom sound effect
         if(line_text.endsWith('playBoomSound()')){new Audio('https://www.myinstants.com/media/sounds/vine-boom.mp3').play(); logAction('Boom!')}
         //Execute javascript from jeroo

@@ -96,19 +96,6 @@ tryApplyTheme()
 //Modify the CSS rules asoociated with a class
 
 setInterval(() => {
-    elems = document.getElementsByClassName('cm-variable')
-    for (i = 0; i < elems.length; i++) {
-        if (elems[i].innerText == 'Jeroo'){
-            elems[i].style.color = '#14BA72'
-        }
-        else if (['hop', 'turn', 'isFlower', 'isNet', 'isWater', 'isClear', 
-                  'isFacing', 'hasFlower', 'give', 'toss', 'pick', 'isJeroo'].includes(elems[i].innerText)) {
-            elems[i].style.color = '#ECDE18'
-        }
-        else {
-            elems[i].style.color = '#36BDC1'
-        }
-    }
     elems = document.getElementsByClassName('cm-keyword')
     for (i = 0; i < elems.length; i++) {
         if (['while', 'if', 'else','else if'].includes(elems[i].innerText)) {
@@ -134,5 +121,36 @@ setInterval(() => {
         }
     }
 }, 100)
+
+setInterval(() => {
+    //Adaptive themeing service
+    code    = localStorage['source']
+    methods = []
+    //Look through the code and find all the methods defined with the following syntax: method name() { ... }
+    for (i = 0; i < code.length; i++) {
+        if (code[i] == 'm' && code[i+1] == 'e' && code[i+2] == 't' && code[i+3] == 'h' && code[i+4] == 'o' && code[i+5] == 'd' && code[i+6] == ' ') {
+            i += 7
+            name = ''
+            while (code[i] != '(') {
+                name += code[i]
+                i++
+            }
+            methods.push(name.replaceAll('_',''))
+        }
+    }
+
+    elems = document.getElementsByClassName('cm-variable')
+    for (i = 0; i < elems.length; i++) {
+        if (methods.includes(elems[i].innerText.replaceAll('_',''))) {
+            elems[i].style.color = '#ECDE18'
+        }
+        else if (elems[i].innerText == 'Jeroo'){elems[i].style.color = '#14BA72'}
+        else if (['hop', 'turn', 'isFlower', 'isNet', 'isWater', 'isClear', 
+                  'isFacing', 'hasFlower', 'give', 'toss', 'pick', 'isJeroo'].includes(elems[i].innerText)) {
+            elems[i].style.color = '#ECDE18'
+        }
+        else {elems[i].style.color = '#36BDC1'}
+    }
+}, 200)
 
 alertify.success('Theme applied')

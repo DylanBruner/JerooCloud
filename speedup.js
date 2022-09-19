@@ -36,8 +36,4 @@ function speedup_runtime(){
     }
     console.log("speedup.js - removed function calls");
 }; speedup_runtime();
-function xtreamSpeedup(){
-    
-}
-
 console.log("speedup.js");
