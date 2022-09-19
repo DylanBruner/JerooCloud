@@ -19,7 +19,6 @@ setTimeout(() => {
     loadScript('/theme.js')
     setTimeout(() => {
         if (!DISABLE_CLOUD){loadScript('/jeroocloud.js')}
-        //loadScript('/movementcontroller.js')
         loadScript('/pathfinding.js')
     }, 2000)
 }, 2000)

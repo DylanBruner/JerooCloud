@@ -15,8 +15,7 @@ DISABLE_THEME   = False #Might want to make this true, because not all menus dis
 
 #List of all javascript files that can be requested
 ExposedJavascriptFiles = ['jeroofeatures.js', 'jeroocloud.js', 'easystar.js', 
-                          'theme.js', 'pathfinding.js', 'movementcontroller.js', 
-                          'speedup.js']
+                          'theme.js', 'pathfinding.js', 'speedup.js']
 if DISABLE_THEME: ExposedJavascriptFiles.remove('theme.js')#yeah, yeah ik it's simple
 
 #My patched version of the compiler, doesn't include a lot of changes so there really shouldn't be any errors with it
