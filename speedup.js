@@ -25,7 +25,7 @@
 function speedup_runtime(){
     for (var i = 0; i < editors.length; i++) {
         var editor = editors[i];
-        window.disableHTMLRead = true; //Stop jeroo features from reading the HTML 
+        window.disableHTMLRead = true; //Stop jeroo features from reading the HTML because it will now use callbacks!!!
         editor.unhighlightLine    = function() {};
         editor.highlightLine      = function(t) {
             setTimeout(() => {

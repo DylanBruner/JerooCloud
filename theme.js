@@ -10,8 +10,7 @@ try {
     localStorage['preferences'] = JSON.stringify(jsonData)
 }
 catch(e){
-    jsonData = {'colorTheme': 'darcula', 'fontSize': 12}
-    localStorage['preferences'] = `"${JSON.stringify(jsonData)}"`
+    localStorage['preferences'] = '{"fontSize":12,"colorTheme":"darcula"}'
 }
 
 //Hide 'Current Language Style'
