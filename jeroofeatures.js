@@ -1,5 +1,5 @@
 DISABLE_CUSTOM_CODE = false; //Usefull if you wanna host this for a class or something
-DISABLE_CLOUD       = false;
+DISABLE_CLOUD       = false; //This can also be disabled server-side to stop the routes from being used even when this is enabled
 
 function loadScript(url){
     var script = document.createElement('script');
