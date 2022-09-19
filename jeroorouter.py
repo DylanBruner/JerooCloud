@@ -13,6 +13,8 @@ DISABLE_THEME   = False #Might want to make this true, because not all menus dis
                         #Small warning, disabling the custom theme will turn line-highlighting back on which is great for beginners and debugging but awful for performance
                         #but there will still be performance boosts from elsewhere so it's not that end of the world still it's a substantial
 
+#Note there are a few more config values in jeroofeatures.js
+
 #List of all javascript files that can be requested
 ExposedJavascriptFiles = ['jeroofeatures.js', 'jeroocloud.js', 'easystar.js', 
                           'theme.js', 'pathfinding.js', 'speedup.js']
