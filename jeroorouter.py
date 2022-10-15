@@ -2,6 +2,9 @@ import requests, base64, json, os
 from flask import Flask, request
 from flask_cors import CORS
 
+if not os.path.exists('programs'):
+    os.mkdir('programs')
+
 app = Flask(__name__)
 CORS(app) #For loading external sounds
 

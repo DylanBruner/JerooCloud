@@ -1,5 +1,4 @@
 //Benchmarks
-
 //Base benchmark============================================================== (Maze)
 //Normal editor speed 6 = 5.93
 //Jeroo+ editor speed 6 = 4.69
